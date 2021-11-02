@@ -1,0 +1,39 @@
+{
+
+    "name": "vinjour/javarunner",
+
+    "description": "The aim of this project is to create a mini-game in Java that makes a character run.",
+
+    "keywords": ["Java", "Runner"],
+
+    "license": "",
+
+    "authors": [
+
+        {
+
+            "name": "Vincent JOURDREN",
+
+            "email": "vincent.jourdren@ensea.fr"
+
+        }
+
+    ],
+
+    "require": {
+
+        "php": ">=5.4.0"
+
+    },
+
+    "autoload": {
+
+        "psr-0": {
+
+            "Fk": "src/"
+
+        }
+
+    }
+
+}
