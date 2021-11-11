@@ -14,11 +14,11 @@ public class Camera {
         return y;
     }
 
-    public void setX(int x) {
+    public void setX(int x){
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(int y){
         this.y = y;
     }
 
@@ -26,6 +26,4 @@ public class Camera {
     public String toString(){
         return (x + "," + y);
     }
-
-
 }

@@ -8,7 +8,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Demo");
         Group root = new Group();
-        GameScene gs = new GameScene(root);
+        GameScene gs = new GameScene(root, 1600, 400);
         primaryStage.setScene(gs);
         primaryStage.show();
     }
