@@ -3,39 +3,57 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public abstract class AnimatedThing {
-    private double x;
-    private double y;
+    protected double xPos;
+    protected double yPos;
+    protected double x;
+    protected double y;
     private Image im;
     private ImageView imV;
-    private int attitude;
-    private int indexImV;
-    private int compteur;
+    protected double imVwidth;
+    protected double imVheight;
+    protected double offset;
+    protected double indexImV;
+    protected double maxIndex;
+    protected double compteur;
 
-    public AnimatedThing(double x, double y, double xEcran, double yEcran, String fileName){
+    public AnimatedThing(double xPos, double yPos, double width, double height, double x, double y, double maxIndex, double offset, double compteur, String fileName){
+        this.xPos = xPos;
+        this.yPos = yPos;
+        imVheight = height;
+        imVwidth = width;
+        this.maxIndex = maxIndex;
+        this.x = x;
+        this.y = y;
+        this.offset = offset;
+        this.compteur = compteur;
         Image im = new Image(fileName);
         imV = new ImageView(im);
-        imV.setViewport(new Rectangle2D(0, 0, 75, 100));
-        imV.setX(xEcran);
-        imV.setY(yEcran);
+        imV.setX(xPos);
+        imV.setY(yPos);
     }
 
-    public double getX(){
-        return x;
+    public double getXPos(){
+        return xPos;
     }
 
-    public double getY(){
-        return y;
+    public double getYPos(){
+        return yPos;
     }
 
     public ImageView getImV(){
         return imV;
     }
 
-    public int getAtti() {
-        return attitude;
+    public double getIndexImV() {
+        return indexImV;
     }
 
-    public void setAtti(int attitude) {
-        this.attitude = attitude;
+    abstract public void mvtUpdate(double time);
+
+    public void update(double time) {
+        indexImV = (int)((time%(maxIndex*compteur))/compteur);
+        imV.setViewport(new Rectangle2D(x+(indexImV*offset),y,imVwidth,imVheight));
+        this.mvtUpdate(time);
     }
+
 }

@@ -1,29 +1,34 @@
 public class Camera {
-    private int x;
-    private int y;
+    private double posX;
+    private double posY;
+    private double a;
+    private double v;
+    private Hero hero;
 
-    public Camera(int x, int y){
-        this.x=x;
-        this.y=y;
-    }
-    public int getX(){
-        return x;
-    }
-
-    public int getY(){
-        return y;
+    public Camera(double x, double y, Hero hero){
+        posX=x;
+        posY=y;
+        this.hero=hero;
     }
 
-    public void setX(int x){
-        this.x = x;
+    public double getPosX(){
+        return posX;
     }
 
-    public void setY(int y){
-        this.y = y;
+    public double getPosY(){
+        return posY;
     }
 
     @Override
     public String toString(){
-        return (x + "," + y);
+        return posX + "," + posY;
+    }
+
+    public void update(double time){
+        a =(hero.getXPos()-posX)-1.2*v;
+        v += a * 0.05;
+        posX += v * 0.05;
+
+        hero.getImV().setX(hero.getImV().getX()-posX+30);
     }
 }
